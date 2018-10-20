@@ -7,6 +7,7 @@ describe('Home.vue', () => {
   it('Component has been render', () => {
     const wrapper = shallow(Home)
     const className = `.${wrapper.vm.$options.name}`
+
     expect(wrapper.findAll(className).length).toBe(1)
   })
 })
