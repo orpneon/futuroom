@@ -1,10 +1,10 @@
 <template>
-  <div class="home"/>
+  <div :class="b()"/>
 </template>
 
 <script>
   export default {
-    name: 'home',
+    name: 'main-content',
     components: {}
   }
 </script>
