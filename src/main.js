@@ -11,8 +11,6 @@ import 'vuejs-noty/dist/vuejs-noty.css'
 import 'vuetify/dist/vuetify.min.css'
 import 'material-design-icons-iconfont/dist/fonts/material-icons.css'
 
-// polyfills
-
 Vue.config.productionTip = false
 Vue.use(vueBemCn)
 Vue.use(VueNoty)
