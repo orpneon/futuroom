@@ -4,7 +4,8 @@ const PER_PAGE = 3
 
 const state = {
   pagination: {},
-  votes: []
+  votes: [],
+  loading: false
 }
 
 const getters = {
@@ -20,15 +21,21 @@ const actions = {
       expired: true
     })
 
+    commit('loading', true)
     request('votes', 'get', params, 'data')
       .then(data => commit('addVotes', data))
+      .finally(() => commit('loading', false))
   }
 }
 
 const mutations = {
   addVotes (state, data) {
     state.pagination = data.pagination
-    state.votes.push(data.votes)
+    state.votes.push(...data.votes)
+  },
+
+  loading (state, toggle) {
+    state.loading = !!toggle
   }
 }
 

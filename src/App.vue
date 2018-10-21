@@ -10,11 +10,11 @@
     margin 0
     padding 0
 
-  body, html
+  body, html, #app
     height 100%
 
   #app
-    font-family 'Roboto', Helvetica, Arial, sans-serif
+    font-family Roboto, Tahoma, sans-serif
     -webkit-font-smoothing antialiased
     -moz-osx-font-smoothing grayscale
     color #2c3e50
