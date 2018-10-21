@@ -1,77 +1,70 @@
 <template>
   <v-container grid-list-lg
                :class="b()"
-               py-0
-               my-0>
-    <v-layout row>
-      <!--<carousel :class="b('carousel')"-->
-      <!--:options="swiperOptions">-->
+               pt-0
+               pb-3
+               my-0
+  >
+    <v-layout v-if="loading"
+              :class="b('layout')"
+              justify-center
+              fill-height
+              align-center
+    >
+      <v-progress-circular indeterminate
+                           color="primary"
+                           :width="2"
+                           size="32"
+      />
+    </v-layout>
+    <v-layout v-else
+              :class="b('layout')"
+    >
       <v-flex v-for="vote in votes"
               :class="b('slide')"
               :key="vote.id"
-              xs4>
-        <v-card :class="b('card')">
-          <v-img :src="vote.thumbnail.url"
-                 :class="('image')"
-          />
-
-          <v-card-title>
-            <h3 :class="b('card-title', 'mb-0')">
-              {{ vote.title }}
-            </h3>
-          </v-card-title>
-
-        </v-card>
+              sm10
+              md4
+      >
+        <single-card :vote="vote"/>
       </v-flex>
-      <!--</carousel>-->
     </v-layout>
   </v-container>
 </template>
 
 <script>
   import { mapGetters } from 'vuex'
-  import Carousel from 'vue-owl-carousel'
+  import SingleCard from '@/components/SingleCard'
 
   export default {
     name: 'vote-cards',
-    components: {
-      Carousel
-    },
-    data () {
-      return {
-        localeStrings: {}
-      }
-    },
-
+    components: { SingleCard },
     computed: {
       ...mapGetters('votes', ['votes']),
 
       loading () {
-        return this.votes.length > 0
+        return this.votes.length === 0
       }
-    },
-
-    methods: {}
+    }
   }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
   .vote-cards
-    padding 30px 0
     background-color #f7f6f8
     color #383644
 
-    &__carousel
-      display flex
+    &__layout
       flex-direction row
-      overflow hidden
 
-    &__slide, &__card
-      min-height 100%
+  @media only screen and (max-width: 960px)
+    .vote-cards
+      &__layout
+        flex-direction column
+        -webkit-box-align center
+        -ms-flex-align center
+        align-items center
 
-
-    &__card-title
-      font-size 18px
-      line-height 24px
-
+      &__slide
+        max-width 400px !important
 </style>

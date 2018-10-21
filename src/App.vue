@@ -10,12 +10,16 @@
     margin 0
     padding 0
 
-  body, html, #app
+  body, html
     height 100%
+    overflow hidden !important
 
   #app
     font-family Roboto, Tahoma, sans-serif
     -webkit-font-smoothing antialiased
     -moz-osx-font-smoothing grayscale
+    height 100%
+    overflow-x hidden
+    overflow-y auto
     color #2c3e50
 </style>
