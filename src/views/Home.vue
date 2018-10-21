@@ -47,4 +47,5 @@
 
     &__wrapper
       flex 1
+      background-color #f7f6f8
 </style>
