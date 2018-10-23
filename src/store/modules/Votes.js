@@ -32,6 +32,7 @@ const mutations = {
   addVotes (state, data) {
     state.pagination = data.pagination
     state.votes.push(...data.votes)
+    state.votes.push(...data.votes)
   },
 
   loading (state, toggle) {

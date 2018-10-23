@@ -20,25 +20,42 @@
     <v-layout v-else
               :class="b('layout')"
     >
-      <v-flex v-for="vote in votes"
-              :class="b('card')"
-              :key="vote.id"
-              sm10
-              md4
-      >
-        <single-card :vote="vote"/>
-      </v-flex>
+      <swiper :options="swiperOption">
+          <single-card v-for="(vote, i) in votes"
+                       :class="b('card')"
+                       :key="i"
+                       sm10
+                       md4
+                       :vote="vote"
+          />
+      </swiper>
     </v-layout>
   </v-container>
 </template>
 
 <script>
   import { mapGetters } from 'vuex'
+  import 'swiper/dist/css/swiper.css'
   import SingleCard from '@/components/SingleCard'
+  import { swiper } from 'vue-awesome-swiper'
 
   export default {
     name: 'vote-cards',
-    components: { SingleCard },
+
+    components: {
+      SingleCard,
+      swiper
+    },
+
+    data () {
+      return {
+        swiperOption: {
+          slidesPerView: 3,
+          slidesPerGroup: 3
+        }
+      }
+    },
+
     computed: {
       ...mapGetters('votes', ['votes']),
 
@@ -57,6 +74,10 @@
     &__layout
       flex-direction row
 
+    &__card
+      padding 12px !important
+      box-sizing border-box
+
   @media only screen and (max-width: 960px)
     .vote-cards
       &__layout
@@ -69,4 +90,5 @@
         max-width 400px !important
         overflow hidden
         flex 1 1 auto !important
+
 </style>

@@ -1,47 +1,52 @@
 <template>
-  <v-card :class="b()">
-    <a :class="b('link-wrapper')"
-       :href="getSingleVoteLink(vote.id)"
-       target="_blank">
+  <swiper-slide>
+    <v-card :class="b()">
+      <a :class="b('link-wrapper')"
+         :href="getSingleVoteLink(vote.id)"
+         target="_blank">
 
-      <div :class="b('image', 'v-responsive v-image image flex')">
-        <div :class="b('image--image', 'v-image__image')"
-             :style="getImageStyle(vote.thumbnail.url)"/>
+        <div :class="b('image', 'v-responsive v-image image flex')">
+          <div :class="b('image--image', 'v-image__image')"
+               :style="getImageStyle(vote.thumbnail.url)"/>
 
-        <span :class="b('image--expire')">
-            <v-icon small
-                    dark>
-              event
-            </v-icon>
-            {{ humanizeExpire(vote) }}
-          </span>
+          <span :class="b('image--expire')">
+              <v-icon small
+                      dark>
+                event
+              </v-icon>
+              {{ humanizeExpire(vote) }}
+            </span>
 
-        <div :class="b('image--filter')"/>
-      </div>
+          <div :class="b('image--filter')"/>
+        </div>
 
-      <v-card-title>
-        <h3 :class="b('card-title', 'mb-0')">
-          {{ vote.title }}
-        </h3>
+        <v-card-title>
+          <h3 :class="b('card-title', 'mb-0')">
+            {{ vote.title }}
+          </h3>
 
-        <content v-if="vote.teaser"
-                 :class="b('card-teaser')">
-          {{ vote.teaser }}
-        </content>
-      </v-card-title>
+          <content v-if="vote.teaser"
+                   :class="b('card-teaser')">
+            {{ vote.teaser }}
+          </content>
+        </v-card-title>
 
-    </a>
-  </v-card>
+      </a>
+    </v-card>
+  </swiper-slide>
 </template>
 
 <script>
   import moment from 'moment'
   import { getSingleVotePage } from '@/utils/api'
+  import { swiperSlide } from 'vue-awesome-swiper'
 
   moment.locale('ru')
 
   export default {
     name: 'single-card',
+
+    components: { swiperSlide },
 
     props: {
       vote: {
