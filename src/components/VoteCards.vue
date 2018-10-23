@@ -1,5 +1,6 @@
 <template>
   <v-container grid-list-lg
+               fluid
                :class="b()"
                pt-0
                pb-3
@@ -57,10 +58,7 @@
 
 <script>
   import 'swiper/dist/css/swiper.css'
-
   import { mapGetters, mapActions } from 'vuex'
-  import { debounce } from 'underscore'
-
   import SingleCard from '@/components/SingleCard'
   import { swiper } from 'vue-awesome-swiper'
 
@@ -70,14 +68,6 @@
     components: {
       SingleCard,
       swiper
-    },
-
-    created () {
-      window.addEventListener('resize', this.resizeSwiper)
-    },
-
-    destroyed () {
-      window.removeEventListener('resize', this.resizeSwiper)
     },
 
     data () {
@@ -136,13 +126,6 @@
         }, 1000)
       },
 
-      // Quick workaround for Firefox and iOS Chrome
-      resizeSwiper: debounce(function () {
-        const swiper = this.getSwiper()
-
-        swiper && swiper.init()
-      }, 300),
-
       getSwiper () {
         return this.$refs.swiper.swiper
       }
@@ -159,8 +142,11 @@
       flex-direction row
       margin -8px !important
 
+      .swiper-container
+        width 100%
+
     &__card
-      padding 12px !important
+      padding 16px !important
       box-sizing border-box
 
     &__hint

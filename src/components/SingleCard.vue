@@ -10,12 +10,12 @@
                :style="getImageStyle(vote.thumbnail.url)"/>
 
           <span :class="b('image--expire')">
-              <v-icon small
-                      dark>
-                event
-              </v-icon>
-              {{ humanizeExpire(vote) }}
-            </span>
+            <v-icon small
+                    dark>
+              event
+            </v-icon>
+            {{ humanizeExpire(vote) }}
+          </span>
 
           <div :class="b('image--filter')"/>
         </div>
