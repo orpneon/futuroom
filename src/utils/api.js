@@ -2,6 +2,7 @@ import axios from 'axios'
 import errorHandler from '@/utils/error-handler'
 
 const API_URL = 'https://rest.vmeste-region.ru/api/'
+const DOMAIN = 'https://vmeste-region.ru'
 
 function buildParams (paramsObject) {
   return Object.keys(paramsObject)
@@ -15,6 +16,10 @@ function buildParams (paramsObject) {
       return `${encodeURIComponent(key)}=${encodeURIComponent(resultValue)}`
     })
     .join('&')
+}
+
+export function getSingleVotePage (pageId) {
+  return `${DOMAIN}/votes/${pageId}`
 }
 
 /**

@@ -21,7 +21,7 @@
               :class="b('layout')"
     >
       <v-flex v-for="vote in votes"
-              :class="b('slide')"
+              :class="b('card')"
               :key="vote.id"
               sm10
               md4
@@ -65,6 +65,8 @@
         -ms-flex-align center
         align-items center
 
-      &__slide
+      &__card
         max-width 400px !important
+        overflow hidden
+        flex 1 1 auto !important
 </style>
