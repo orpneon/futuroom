@@ -10,7 +10,8 @@ const state = {
 
 const getters = {
   pagination: state => state.pagination,
-  votes: state => state.votes
+  votes: state => state.votes,
+  hasMorePages: state => state.pagination.hasMorePages
 }
 
 const actions = {
@@ -25,6 +26,11 @@ const actions = {
     request('votes', 'get', params, 'data')
       .then(data => commit('addVotes', data))
       .finally(() => commit('loading', false))
+  },
+
+  loadNextPage ({ dispatch, getters }) {
+    const nextPage = getters.pagination.currentPage + 1
+    return dispatch('loadVotes', nextPage)
   }
 }
 

@@ -33,6 +33,8 @@
 <style lang="stylus" scoped>
   .main-content
     width 100%
+    max-width 1264px
+    margin 0 auto
     min-height 100%
     display flex
     flex-direction column
