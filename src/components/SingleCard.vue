@@ -38,7 +38,7 @@
 
 <script>
   import moment from 'moment'
-  import { getSingleVotePage } from '@/utils/api'
+  import { getDomainUrl } from '@/utils/api'
   import { swiperSlide } from 'vue-awesome-swiper'
 
   moment.locale('ru')
@@ -69,7 +69,8 @@
       },
 
       getSingleVoteLink (pageId) {
-        return getSingleVotePage(pageId)
+        const domain = getDomainUrl()
+        return `${domain}/votes/${pageId}`
       }
     }
   }

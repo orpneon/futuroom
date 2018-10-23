@@ -18,8 +18,8 @@ function buildParams (paramsObject) {
     .join('&')
 }
 
-export function getSingleVotePage (pageId) {
-  return `${DOMAIN}/votes/${pageId}`
+export function getDomainUrl () {
+  return DOMAIN
 }
 
 /**
