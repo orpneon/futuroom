@@ -4,33 +4,28 @@
                :class="b()"
                pt-0
                pb-3
-               my-0
-  >
+               my-0>
+
     <v-layout v-if="loading"
               :class="b('layout')"
               justify-center
               fill-height
-              align-center
-    >
+              align-center>
       <v-progress-circular indeterminate
                            color="primary"
                            :width="2"
-                           size="32"
-      />
+                           size="32"/>
     </v-layout>
 
     <v-layout v-else
-              :class="b('layout')"
-    >
+              :class="b('layout')">
       <swiper :options="swiperOption"
               @touchEnd="showNextSlideGroup"
-              ref="swiper"
-      >
-          <single-card v-for="(vote, i) in votes"
-                       :class="b('card')"
-                       :key="i"
-                       :vote="vote"
-          />
+              ref="swiper">
+        <single-card v-for="(vote, i) in votes"
+                     :class="b('card')"
+                     :key="i"
+                     :vote="vote"/>
       </swiper>
     </v-layout>
 
@@ -45,13 +40,11 @@
               :class="b('mask')"
               justify-center
               fill-height
-              align-center
-    >
+              align-center>
       <v-progress-circular indeterminate
                            color="white"
                            :width="3"
-                           size="32"
-      />
+                           size="32"/>
     </v-layout>
   </v-container>
 </template>
@@ -85,7 +78,7 @@
               slidesPerView: 2,
               slidesPerGroup: 2
             },
-            // when window width is <= 640px
+            // when window width is <= 600px
             600: {
               slidesPerView: 1,
               slidesPerGroup: 1
