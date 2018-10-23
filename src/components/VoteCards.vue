@@ -56,8 +56,11 @@
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex'
   import 'swiper/dist/css/swiper.css'
+
+  import { mapGetters, mapActions } from 'vuex'
+  import { debounce } from 'underscore'
+
   import SingleCard from '@/components/SingleCard'
   import { swiper } from 'vue-awesome-swiper'
 
@@ -69,11 +72,20 @@
       swiper
     },
 
+    created () {
+      window.addEventListener('resize', this.resizeSwiper)
+    },
+
+    destroyed () {
+      window.removeEventListener('resize', this.resizeSwiper)
+    },
+
     data () {
       return {
         localeStrings: {
           hint: 'Двигайте слайдер справа налево, чтобы увидеть больше завершенных голосований'
         },
+
         swiperOption: {
           slidesPerView: 3,
           slidesPerGroup: 3,
@@ -83,7 +95,6 @@
               slidesPerView: 2,
               slidesPerGroup: 2
             },
-
             // when window width is <= 640px
             600: {
               slidesPerView: 1,
@@ -91,6 +102,7 @@
             }
           }
         },
+
         newPageIsLoading: false
       }
     },
@@ -123,6 +135,13 @@
           swiper.slideNext()
         }, 1000)
       },
+
+      // Quick workaround for Firefox and iOS Chrome
+      resizeSwiper: debounce(function () {
+        const swiper = this.getSwiper()
+
+        swiper && swiper.init()
+      }, 300),
 
       getSwiper () {
         return this.$refs.swiper.swiper
