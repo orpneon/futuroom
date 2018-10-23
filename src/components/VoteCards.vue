@@ -33,6 +33,13 @@
       </swiper>
     </v-layout>
 
+    <p :class="b('hint')">
+      <v-icon color="blue lighten-3">info</v-icon>
+      <span>
+        {{ localeStrings.hint }}
+      </span>
+    </p>
+
     <v-layout v-if="newPageIsLoading"
               :class="b('mask')"
               justify-center
@@ -64,6 +71,9 @@
 
     data () {
       return {
+        localeStrings: {
+          hint: 'Двигайте слайдер справа налево, чтобы увидеть больше завершенных голосований'
+        },
         swiperOption: {
           slidesPerView: 3,
           slidesPerGroup: 3,
@@ -133,6 +143,14 @@
     &__card
       padding 12px !important
       box-sizing border-box
+
+    &__hint
+      margin-top 20px
+      line-height 24px
+      padding-left 4px
+
+      .v-icon
+        margin 0 4px -2px 0
 
     &__mask
       background-color rgba(0, 0, 0, 0.34)
