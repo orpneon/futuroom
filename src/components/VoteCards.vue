@@ -17,24 +17,25 @@
                            size="32"/>
     </v-layout>
 
-    <v-layout v-else
-              :class="b('layout')">
-      <swiper :options="swiperOption"
-              @touchEnd="showNextSlideGroup"
-              ref="swiper">
-        <single-card v-for="(vote, i) in votes"
-                     :class="b('card')"
-                     :key="i"
-                     :vote="vote"/>
-      </swiper>
-    </v-layout>
+    <template v-else>
+      <v-layout :class="b('layout')">
+        <swiper :options="swiperOption"
+                @touchEnd="showNextSlideGroup"
+                ref="swiper">
+          <single-card v-for="(vote, i) in votes"
+                       :class="b('card')"
+                       :key="i"
+                       :vote="vote"/>
+        </swiper>
+      </v-layout>
 
-    <p :class="b('hint')">
-      <v-icon color="blue lighten-3">info</v-icon>
-      <span>
-        {{ localeStrings.hint }}
-      </span>
-    </p>
+      <p :class="b('hint')">
+        <v-icon color="blue lighten-3">info</v-icon>
+        <span>
+          {{ localeStrings.hint }}
+        </span>
+      </p>
+    </template>
 
     <v-layout v-if="newPageIsLoading"
               :class="b('mask')"
