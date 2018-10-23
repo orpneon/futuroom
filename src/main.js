@@ -1,3 +1,10 @@
+// polyfills
+import '@babel/polyfill'
+import 'dom-shims/shim/HTMLDocument'
+import 'dom-shims/shim/Element.matches'
+import 'dom-shims/shim/Element.closest'
+import 'dom-shims/shim/Element.mutation'
+
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router/'

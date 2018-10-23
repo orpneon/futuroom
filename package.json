@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --port 8082 --max_old_space_size=2048",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "dom-shims": "^0.1.4",
     "material-design-icons-iconfont": "^3.0.3",
     "moment": "^2.22.2",
     "vue": "^2.5.17",
