@@ -24,7 +24,7 @@ Vue.config.productionTip = false
 Vue.use(vueBemCn)
 Vue.use(VueNoty)
 Vue.use(Vuetify)
-Vue.use(VueAwesomeSwiper, /* { default global options } */)
+Vue.use(VueAwesomeSwiper)
 
 new Vue({
   router,

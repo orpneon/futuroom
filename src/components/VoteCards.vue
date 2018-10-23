@@ -28,8 +28,6 @@
           <single-card v-for="(vote, i) in votes"
                        :class="b('card')"
                        :key="i"
-                       sm10
-                       md4
                        :vote="vote"
           />
       </swiper>
@@ -68,7 +66,20 @@
       return {
         swiperOption: {
           slidesPerView: 3,
-          slidesPerGroup: 3
+          slidesPerGroup: 3,
+          breakpoints: {
+            // when window width is <= 960px
+            960: {
+              slidesPerView: 2,
+              slidesPerGroup: 2
+            },
+
+            // when window width is <= 640px
+            600: {
+              slidesPerView: 1,
+              slidesPerGroup: 1
+            }
+          }
         },
         newPageIsLoading: false
       }
@@ -131,18 +142,5 @@
       right 0
       left 0
       z-index 10000
-
-  @media only screen and (max-width: 960px)
-    .vote-cards
-      &__layout
-        flex-direction column
-        -webkit-box-align center
-        -ms-flex-align center
-        align-items center
-
-      &__card
-        max-width 400px !important
-        overflow hidden
-        flex 1 1 auto !important
 
 </style>
