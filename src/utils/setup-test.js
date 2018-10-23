@@ -2,6 +2,7 @@ import { createLocalVue, mount, shallowMount } from '@vue/test-utils'
 import vueBemCn from 'vue-bem-cn/dist/vue-bem-cn.umd.min'
 import Vuex from 'vuex'
 import Router from 'vue-router'
+import Vuetify from 'vuetify'
 
 export function setupTest () {
   const localVue = createLocalVue()
@@ -9,6 +10,7 @@ export function setupTest () {
   localVue.use(vueBemCn)
   localVue.use(Router)
   localVue.use(Vuex)
+  localVue.use(Vuetify)
 
   return {
     shallow (cmp, options = {}) {
@@ -25,4 +27,8 @@ export function setupTest () {
       })
     }
   }
+}
+
+export function generateStore (modules = {}) {
+  return new Vuex.Store({ modules })
 }

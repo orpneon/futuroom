@@ -1,0 +1,19 @@
+{
+  "id": 123,
+  "title": "Заголовок",
+  "teaser": "Описание",
+  "date": "2018-09-20 12:00:00",
+  "expire": "2018-10-22 12:00:00",
+  "isExpired": true,
+  "isPublic": true,
+  "isProposal": false,
+  "isPersonal": false,
+  "thumbnail": {
+    "url": "http://tests/image.jpeg",
+    "width": 1920,
+    "height": 1440
+  },
+  "video": null,
+  "count": 1255,
+  "isDone": false
+}
