@@ -20,7 +20,10 @@
     <v-layout v-else
               :class="b('layout')"
     >
-      <swiper :options="swiperOption">
+      <swiper :options="swiperOption"
+              @touchEnd="showNextSlideGroup"
+              ref="swiper"
+      >
           <single-card v-for="(vote, i) in votes"
                        :class="b('card')"
                        :key="i"
@@ -34,7 +37,7 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
   import 'swiper/dist/css/swiper.css'
   import SingleCard from '@/components/SingleCard'
   import { swiper } from 'vue-awesome-swiper'
@@ -52,15 +55,42 @@
         swiperOption: {
           slidesPerView: 3,
           slidesPerGroup: 3
-        }
+        },
+        newPageIsLoading: false
       }
     },
 
     computed: {
-      ...mapGetters('votes', ['votes']),
+      ...mapGetters('votes', ['votes', 'hasMorePages']),
 
       loading () {
         return this.votes.length === 0
+      }
+    },
+
+    methods: {
+      ...mapActions('votes', ['loadNextPage']),
+
+      showNextSlideGroup () {
+        const swiper = this.getSwiper()
+
+        if (swiper.isEnd && this.hasMorePages && !this.newPageIsLoading) {
+          this.newPageIsLoading = true
+          this.loadNextPage().then(this.slideNext)
+        }
+      },
+
+      slideNext () {
+        const swiper = this.getSwiper()
+
+        setTimeout(() => {
+          this.newPageIsLoading = false
+          swiper.slideNext()
+        }, 1000)
+      },
+
+      getSwiper () {
+        return this.$refs.swiper.swiper
       }
     }
   }
