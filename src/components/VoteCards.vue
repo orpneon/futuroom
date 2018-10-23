@@ -17,6 +17,7 @@
                            size="32"
       />
     </v-layout>
+
     <v-layout v-else
               :class="b('layout')"
     >
@@ -32,6 +33,19 @@
                        :vote="vote"
           />
       </swiper>
+    </v-layout>
+
+    <v-layout v-if="newPageIsLoading"
+              :class="b('mask')"
+              justify-center
+              fill-height
+              align-center
+    >
+      <v-progress-circular indeterminate
+                           color="white"
+                           :width="3"
+                           size="32"
+      />
     </v-layout>
   </v-container>
 </template>
@@ -103,10 +117,20 @@
 
     &__layout
       flex-direction row
+      margin -8px !important
 
     &__card
       padding 12px !important
       box-sizing border-box
+
+    &__mask
+      background-color rgba(0, 0, 0, 0.34)
+      position absolute
+      top 0
+      bottom 0
+      right 0
+      left 0
+      z-index 10000
 
   @media only screen and (max-width: 960px)
     .vote-cards
