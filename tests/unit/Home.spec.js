@@ -4,7 +4,7 @@ import Home from '@/views/Home.vue'
 const { shallow } = setupTest()
 
 describe('Home.vue', () => {
-  it('Component has been render', () => {
+  it('Component has been rendered', () => {
     const wrapper = shallow(Home, {
       methods: {
         loadVotes: () => {}

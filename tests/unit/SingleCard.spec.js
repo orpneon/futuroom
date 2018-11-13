@@ -5,7 +5,7 @@ import voteMock from './../mocks/vote.json'
 const { shallow } = setupTest()
 
 describe('SingleCard.vue', () => {
-  it('Component has been render', () => {
+  it('Component has been rendered', () => {
     const wrapper = shallow(SingleCard, {
       propsData: {
         vote: voteMock

@@ -6,7 +6,7 @@ import VotesModule from '@/store/modules/Votes'
 const { shallow } = setupTest()
 
 describe('VoteCards.vue', () => {
-  it('Component has been render', () => {
+  it('Component has been rendered', () => {
     const wrapper = shallow(VoteCards, {
       store: generateStore({
         votes: {
